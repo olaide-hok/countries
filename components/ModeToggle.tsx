@@ -34,15 +34,15 @@ export function ModeToggle() {
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
             {theme === 'light' ? (
                 <>
-                    <Moon className="h-[1.2rem] w-[1.2rem]" />
-                    <span className="text-(--primary-foreground) text-base font-semibold leading-(--lh-200)">
+                    <Moon className="h-[1rem] w-[1rem]" />
+                    <span className="text-(--primary-foreground) text-(length:--fs-12) lg:text-base font-semibold leading-(--lh-135) lg:leading-(--lh-200)">
                         Dark Mode
                     </span>
                 </>
             ) : (
                 <>
-                    <Sun className="h-[1.2rem] w-[1.2rem]" />
-                    <span className="text-(--primary-foreground) text-base font-semibold leading-(--lh-200)">
+                    <Sun className="h-[1rem] w-[1rem]" />
+                    <span className="text-(--primary-foreground) text-(length:--fs-12) lg:text-base font-semibold leading-(--lh-135) lg:leading-(--lh-200)">
                         Light Mode
                     </span>
                 </>
