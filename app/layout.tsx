@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import {Nunito_Sans} from 'next/font/google';
 import './globals.css';
 import {ThemeProvider} from '@/components/theme-provider';
+import {CountryProvider} from '@/context/CountryContext';
 
 const nunitoSans = Nunito_Sans({
     variable: '--ff-nunito-sans',
@@ -26,7 +27,7 @@ export default function RootLayout({
                     defaultTheme="system"
                     enableSystem
                     disableTransitionOnChange>
-                    {children}
+                    <CountryProvider>{children}</CountryProvider>
                 </ThemeProvider>
             </body>
         </html>
