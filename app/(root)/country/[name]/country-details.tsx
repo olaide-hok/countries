@@ -37,7 +37,7 @@ const CountryDetails = ({name: countryName}: CountryDetailsProps) => {
             <BackBtn />
 
             {/* Details */}
-            <div className="flex flex-col gap-y-(--space-600) lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-y-(--space-600) lg:gap-x-[7rem] lg:flex-row lg:items-center lg:justify-between">
                 {/* Flag */}
                 <img
                     className="img-details rounded w-[19.9898rem] h-[14.245rem] md:w-[35.5929rem] md:h-[27.2252rem] lg:w-[34.9822rem] lg:h-[25.0625rem]"
@@ -130,15 +130,15 @@ const CountryDetails = ({name: countryName}: CountryDetailsProps) => {
                         </div>
 
                         {/* Border Countries */}
-                        <div className="flex flex-col items-center gap-y-(--space-200) md:flex-row md:gap-x-(--space-200)">
+                        <div className="flex flex-col gap-y-(--space-200)  md:flex-row md:gap-x-(--space-200)">
                             <h4 className="text-(length:--fs-14) md:text-(length:--fs-16) font-semibold leading-[1rem]">
                                 Border Countries:
                             </h4>
 
-                            <div className="flex  gap-(--space-100) md:gap-x-(--space-200)">
+                            <div className="flex flex-wrap gap-(--space-100) md:gap-x-(--space-200)">
                                 {borders.map((border) => (
                                     <span
-                                        className="border-tile bg-(--primary) rounded-[0.25rem] text-(length:--fs-12) text-center px-[1.875rem] py-(--space-100) font-light leading-(--lh-135)  h-[1.75rem]"
+                                        className="border-tile bg-(--primary) rounded-[0.25rem] text-(length:--fs-12) text-center py-(--space-100) font-light leading-(--lh-135)  h-[1.75rem] w-[5rem]"
                                         key={border}>
                                         {border}
                                     </span>
