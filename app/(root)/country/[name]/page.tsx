@@ -9,9 +9,10 @@ type Props = {
 export async function generateMetadata({params}: Props): Promise<Metadata> {
     // read route params
     const {name} = await params;
+    const nameToUse = decodeURIComponent(name);
 
     // fetch country data
-    const countryData = countriesData.find((c) => c.name === name);
+    const countryData = countriesData.find((c) => c.name === nameToUse);
 
     if (!countryData) {
         return {
@@ -26,8 +27,9 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
 
 const CountryDetailsPage = async ({params}: Props) => {
     const {name} = await params;
+    const nameToUse = decodeURIComponent(name);
 
-    return <CountryDetails name={name} />;
+    return <CountryDetails name={nameToUse} />;
 };
 
 export default CountryDetailsPage;
