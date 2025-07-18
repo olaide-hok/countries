@@ -15,7 +15,7 @@ const CountryCard = ({country}: CountryCardProps) => {
             href={`/country/${name}`}
             className="country-card bg-(--primary) flex flex-col rounded-[0.3125rem] w-[16.5rem] h-[21rem] overflow-hidden">
             {/* Flag */}
-            <div className="flag flex-1">
+            <div className="flag flex-1 overflow-hidden">
                 <Image
                     src={flags.svg}
                     alt={`${name} flag`}
