@@ -32,7 +32,7 @@ const CountryDetails = ({name: countryName}: CountryDetailsProps) => {
     console.log('name--', name);
 
     return (
-        <div className="flex flex-col gap-y-(--space-800) md:gap-y-(--space-700) lg:gap-y-(--space-1000) mt-(--space-300) md:mt-(--space-500) lg:mt-(--space-1000) mb-[3.4375rem] md:mb-(--space-800) px-[1.0938rem] md:w-[35.625rem] md:mx-auto lg:w-[79.875rem]">
+        <div className="container flex flex-col gap-y-(--space-800) md:gap-y-(--space-700) lg:gap-y-(--space-1000) mt-(--space-300) md:mt-(--space-500) lg:mt-(--space-1000) mb-[3.4375rem] md:mb-(--space-800) px-[1.0938rem] mx-auto md:px-[6.1875rem] lg:px-(--space-800) ">
             {/* Back button */}
             <BackBtn />
 
@@ -130,7 +130,7 @@ const CountryDetails = ({name: countryName}: CountryDetailsProps) => {
                         </div>
 
                         {/* Border Countries */}
-                        <div className="flex flex-col gap-y-(--space-200)  md:flex-row md:gap-x-(--space-200)">
+                        <div className="flex flex-col gap-y-(--space-200) md:items-center  md:flex-row md:gap-x-(--space-200)">
                             <h4 className="text-(length:--fs-14) md:text-(length:--fs-16) font-semibold leading-[1rem]">
                                 Border Countries:
                             </h4>

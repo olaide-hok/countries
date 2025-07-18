@@ -20,7 +20,7 @@ const SearchFilter = () => {
     };
 
     return (
-        <div className="flex flex-col  gap-y-(--space-500)  md:flex-row md:justify-center lg:justify-between">
+        <div className="flex flex-col px-(--space-200) md:px-(--space-500)  lg:px-(--space-800) gap-y-(--space-500)  md:flex-row md:justify-center lg:justify-between">
             {/* Search Bar */}
             <div className="input-wrapper bg-(--primary) relative max-w-[30rem] md:w-[30rem] pl-(--space-400) h-(--space-700) overflow-hidden">
                 <Search className="absolute left-8 top-1/2 transform -translate-y-1/2 w-4 h-4 text-(--secondary-foreground)" />
