@@ -36,10 +36,10 @@ const CountryDetails = ({name: countryName}: CountryDetailsProps) => {
             <BackBtn />
 
             {/* Details */}
-            <div className="flex flex-col gap-y-(--space-600) lg:gap-x-[7rem] lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-y-(--space-600) lg:gap-x-[7rem] lg:flex-row lg:items-center">
                 {/* Flag */}
                 <img
-                    className="img-details rounded w-[19.9898rem] h-[14.245rem] md:w-[35.5929rem] md:h-[27.2252rem] lg:w-[34.9822rem] lg:h-[25.0625rem]"
+                    className="img-details rounded-[0.5rem] overflow-hidden w-[19.9898rem] h-[14.245rem] md:w-[35.5929rem] md:h-[27.2252rem] lg:w-[34.9822rem] lg:h-[25.0625rem]"
                     src={flag}
                     alt={`${name} flag`}
                 />
