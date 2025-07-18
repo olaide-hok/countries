@@ -8,13 +8,10 @@ This is a solution to the [REST Countries API with color theme switcher challeng
     -   [The challenge](#the-challenge)
     -   [Screenshot](#screenshot)
     -   [Links](#links)
--   [My process](#my-process)
+-   [Getting Started](#getting-started)
     -   [Built with](#built-with)
     -   [Useful resources](#useful-resources)
 -   [Author](#author)
--   [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -31,16 +28,25 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+<table>
+ <tr>
+    <th>Desktop</th>
+    <th>Tablet</th>
+    <th>Mobile</th>
+  </tr>
+  <tr>
+    <td><img src="./countries-desktop.png" alt="Desktop version"></td>
+    <td><img src="./countries-tablet.png" alt="Tablet version"></td>
+    <td><img src="./countries-mobile.png" alt="Mobile version"></td>
+  </tr>
+</table>
 
 ### Links
 
--   Solution URL: [Add solution URL here](https://your-solution-url.com)
--   Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+-   Solution URL: [Link](https://github.com/olaide-hok/countries/)
+-   Live Site URL: [Link](https://app-countries-details.netlify.app/)
 
-## My process
-
-### Getting Started
+## Getting Started
 
 First, run the development server:
 
@@ -73,8 +79,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Author
 
--   Website - [Add your name here](https://www.your-site.com)
--   Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
--   Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+-   Website - [Habeeb Kareem](https://habeeb-dev.netlify.app)
+-   Frontend Mentor - [@olaide-hok](https://www.frontendmentor.io/profile/olaide-hok)
