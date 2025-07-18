@@ -25,11 +25,11 @@ const CountryCard = ({country}: CountryCardProps) => {
             </div>
 
             {/* Details */}
-            <div className="details flex flex-col flex-1 gap-y-(--space-200) flex-1 pl-[1.62rem] pt-[1.37rem]">
+            <div className="details flex flex-col flex-1 gap-y-(--space-200) pl-[1.62rem] pt-[1.37rem]">
                 {/* Name */}
-                <h3 className="text-(length:--fs-18) font-extrabold leading-(--lh-145)">
+                <h2 className="text-(length:--fs-18) font-extrabold leading-(--lh-145)">
                     {name}
-                </h3>
+                </h2>
 
                 <div className="flex flex-col gap-y-(--space-100)">
                     {/* Population */}
