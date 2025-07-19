@@ -67,3 +67,26 @@ export interface CountriesFilter {
     name: string;
     region: string;
 }
+
+export interface CountryAPI {
+    name: {
+        common: string;
+        official: string;
+        nativeName: {
+            [key: string]: {
+                official: string;
+                common: string;
+            };
+        };
+    };
+    flags: {
+        svg: string;
+        png: string;
+        alt: string;
+    };
+    capital: string[];
+    region: string;
+    population: number;
+}
+
+export type CountriesAPI = CountryAPI[];
