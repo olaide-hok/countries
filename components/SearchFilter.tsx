@@ -1,15 +1,17 @@
-import {ChevronDown, Search} from 'lucide-react';
+import {Search} from 'lucide-react';
 import {Input} from '@/components/ui/input';
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
+
 import {useCountries} from '@/context/CountryContext';
 
 const SearchFilter = () => {
-    const {setFilters} = useCountries();
+    const {filteredCountries, setFilters} = useCountries();
 
     const handleSearchChange = (value: string) => {
         setFilters({name: value});
@@ -32,35 +34,21 @@ const SearchFilter = () => {
             </div>
 
             {/* Filter Dropdown */}
-
-            <DropdownMenu>
-                <DropdownMenuTrigger className="dropdown-trigger bg-(--primary) rounded-[0.3125rem] text-(length:--fs-14) w-[12.5rem] h-(--space-700) flex items-center justify-between px-(--space-300) cursor-pointer outline-none">
-                    Filter by Region
-                    <ChevronDown />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-(--primary) w-[12.5rem] px-(--space-300)">
-                    <DropdownMenuItem
-                        onClick={() => handleRegionChange('Africa')}>
-                        Africa
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                        onClick={() => handleRegionChange('America')}>
-                        America
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                        onClick={() => handleRegionChange('Asia')}>
-                        Asia
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                        onClick={() => handleRegionChange('Europe')}>
-                        Europe
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                        onClick={() => handleRegionChange('Oceania')}>
-                        Oceania
-                    </DropdownMenuItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
+            <Select
+                value={filteredCountries.region || ''}
+                onValueChange={handleRegionChange}>
+                <SelectTrigger className="dropdown-trigger bg-(--primary) rounded-[0.3125rem] text-(length:--fs-14) w-[12.5rem] h-(--space-700) flex items-center justify-between px-(--space-300) cursor-pointer outline-none">
+                    <SelectValue placeholder="Filter by region" />
+                </SelectTrigger>
+                <SelectContent className="bg-(--primary) w-[12.5rem] px-(--space-300)">
+                    <SelectItem value="all">Filter by Region</SelectItem>
+                    <SelectItem value="Africa">Africa</SelectItem>
+                    <SelectItem value="America">America</SelectItem>
+                    <SelectItem value="Asia">Asia</SelectItem>
+                    <SelectItem value="Europe">Europe</SelectItem>
+                    <SelectItem value="Oceania">Oceania</SelectItem>
+                </SelectContent>
+            </Select>
         </div>
     );
 };
