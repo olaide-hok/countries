@@ -90,3 +90,16 @@ export interface CountryAPI {
 }
 
 export type CountriesAPI = CountryAPI[];
+
+export interface CountryData {
+    name: {nativeName: {[key: string]: {common: string}}; common: string};
+    population: number;
+    region: string;
+    subregion: string;
+    capital: string;
+    flags: {svg: string; png: string; alt: string};
+    tld: string[];
+    borders: string[];
+    currencies: {[key: string]: {name: string}};
+    languages: {[key: string]: string};
+}
