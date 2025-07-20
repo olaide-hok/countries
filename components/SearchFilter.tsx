@@ -29,6 +29,7 @@ const SearchFilter = () => {
                 <Input
                     placeholder="Search for a country..."
                     className="border-none shadow-none rounded-none text-(length:--fs-14) pl-(--space-600) text-base h-full w-full outline-none focus-visible:ring-0 leading-(--lh-145)"
+                    value={filteredCountries.name || ''}
                     onChange={(e) => handleSearchChange(e.target.value)}
                 />
             </div>
