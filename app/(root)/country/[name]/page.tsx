@@ -1,6 +1,6 @@
-import countriesData from '@/data/data.json';
 import {Metadata} from 'next';
-import CountryDetails from './country-details';
+import CountryDetailsAPI from './country-details-api';
+import {countryDetailsEndpoint, fetcher} from '@/lib/utils';
 
 type Props = {
     params: Promise<{name: string}>;
@@ -12,16 +12,16 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
     const nameToUse = decodeURIComponent(name);
 
     // fetch country data
-    const countryData = countriesData.find((c) => c.name === nameToUse);
+    const data = await fetcher(`${countryDetailsEndpoint}${nameToUse}`);
 
-    if (!countryData) {
+    if (!data[0]) {
         return {
             title: 'Country Details not found',
         };
     }
 
     return {
-        title: `${countryData.name}`,
+        title: `${data[0].name.common}`,
     };
 }
 
@@ -29,7 +29,7 @@ const CountryDetailsPage = async ({params}: Props) => {
     const {name} = await params;
     const nameToUse = decodeURIComponent(name);
 
-    return <CountryDetails name={nameToUse} />;
+    return <CountryDetailsAPI name={nameToUse} />;
 };
 
 export default CountryDetailsPage;
