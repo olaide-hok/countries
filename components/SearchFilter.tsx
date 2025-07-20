@@ -9,7 +9,7 @@ import {
 import {useCountries} from '@/context/CountryContext';
 
 const SearchFilter = () => {
-    const {setFilters} = useCountries();
+    const {filteredCountries, setFilters} = useCountries();
 
     const handleSearchChange = (value: string) => {
         setFilters({name: value});
@@ -27,6 +27,7 @@ const SearchFilter = () => {
                 <Input
                     placeholder="Search for a country..."
                     className="border-none shadow-none rounded-none text-(length:--fs-14) pl-(--space-600) text-base h-full w-full outline-none focus-visible:ring-0 leading-(--lh-145)"
+                    value={filteredCountries.name || ''}
                     onChange={(e) => handleSearchChange(e.target.value)}
                 />
             </div>
@@ -35,10 +36,15 @@ const SearchFilter = () => {
 
             <DropdownMenu>
                 <DropdownMenuTrigger className="dropdown-trigger bg-(--primary) rounded-[0.3125rem] text-(length:--fs-14) w-[12.5rem] h-(--space-700) flex items-center justify-between px-(--space-300) cursor-pointer outline-none">
-                    Filter by Region
+                    {filteredCountries.region
+                        ? filteredCountries.region
+                        : 'Filter by Region'}
                     <ChevronDown />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-(--primary) w-[12.5rem] px-(--space-300)">
+                    <DropdownMenuItem onClick={() => handleRegionChange('')}>
+                        All
+                    </DropdownMenuItem>
                     <DropdownMenuItem
                         onClick={() => handleRegionChange('Africa')}>
                         Africa
