@@ -13,7 +13,7 @@ export const formatNumber = (num: number): string => {
     });
 };
 
-const url = `https://restcountries.com/v3.1/name/`;
+export const countryDetailsEndpoint = `https://restcountries.com/v3.1/name/`;
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 /**
@@ -27,7 +27,10 @@ export const fetcher = (url: string) => fetch(url).then((res) => res.json());
  * }
  */
 export function useGetCountry(name: string) {
-    const {data, error, isLoading} = useSWR(`${url}${name}`, fetcher);
+    const {data, error, isLoading} = useSWR(
+        `${countryDetailsEndpoint}${name}`,
+        fetcher
+    );
 
     return {
         countryData: data,
