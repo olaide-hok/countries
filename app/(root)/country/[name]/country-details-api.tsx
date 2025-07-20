@@ -2,34 +2,54 @@
 'use client';
 
 import BackBtn from '@/components/BackBtn';
-import {useCountries} from '@/context/CountryContext';
-import {formatNumber} from '@/lib/utils';
+import {formatNumber, useGetCountry} from '@/lib/utils';
+import {CountryData} from '@/types/country';
+import {AlertTriangle, Globe, Loader2} from 'lucide-react';
+import {Alert, AlertDescription, AlertTitle} from '@/components/ui/alert';
 
-import useSWR from 'swr';
-
-const url = `https://restcountries.com/v3.1/name/`;
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-function useCountry(name: string) {
-    const {data, error, isLoading} = useSWR(`${url}${name}`, fetcher);
-
-    return {
-        countryData: data,
-        isLoading,
-        isError: error,
-    };
-}
 interface CountryDetailsAPIProps {
     name: string;
 }
 
 const CountryDetailsAPI = ({name: countryName}: CountryDetailsAPIProps) => {
-    const {countryData, isLoading, isError} = useCountry(countryName);
+    const {countryData, isLoading, isError} = useGetCountry(countryName);
 
-    if (isError) return 'An error has occurred.';
-    if (isLoading) return 'Loading...';
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center py-12">
+                <Loader2 className="animate-spin h-6 w-6 text-muted-foreground" />
+                <span className="ml-2 text-muted-foreground">Loading...</span>
+            </div>
+        );
+    }
 
-    if (!countryData) {
-        return <div>Country not found</div>;
+    if (isError) {
+        return (
+            <div className="flex justify-center py-8">
+                <Alert variant="destructive" className="w-fit">
+                    <AlertTriangle className="h-4 w-4" />
+                    <AlertTitle>Error</AlertTitle>
+                    <AlertDescription>
+                        An error has occurred. Please try again.
+                    </AlertDescription>
+                </Alert>
+            </div>
+        );
+    }
+
+    if (countryData.message === 'Not Found') {
+        return (
+            <div className="flex justify-center items-center h-64">
+                <Alert variant="destructive" className="max-w-md text-center">
+                    <Globe className="h-[1rem] w-[1rem" />
+                    <AlertTitle>Country Not Found</AlertTitle>
+                    <AlertDescription>
+                        We couldn&apos;t find the country you&apos;re looking
+                        for. Please check the name and try again.
+                    </AlertDescription>
+                </Alert>
+            </div>
+        );
     }
 
     const {
@@ -43,7 +63,17 @@ const CountryDetailsAPI = ({name: countryName}: CountryDetailsAPIProps) => {
         borders,
         currencies,
         languages,
-    } = countryData[0];
+    } = countryData[0] as CountryData;
+
+    // Native name (common) — get first entry if available
+    const nativeNameCommon =
+        name?.nativeName && Object.values(name.nativeName)[0]?.common;
+
+    // Currency name — get first entry if available
+    const currencyName = currencies && Object.values(currencies)[0]?.name;
+
+    // Languages — get all names in array form
+    const languageNames = languages ? Object.values(languages).join(', ') : '';
 
     return (
         <div className="container flex flex-col gap-y-(--space-800) md:gap-y-(--space-700) lg:gap-y-(--space-1000) mt-(--space-300) md:mt-(--space-500) lg:mt-(--space-1000) mb-[3.4375rem] md:mb-(--space-800) px-[1.0938rem] mx-auto md:px-[6.1875rem] lg:px-(--space-800) ">
@@ -54,13 +84,13 @@ const CountryDetailsAPI = ({name: countryName}: CountryDetailsAPIProps) => {
             <div className="flex flex-col gap-y-(--space-600) lg:gap-x-[7rem] lg:flex-row lg:items-center">
                 {/* Flag */}
                 <img
-                    className="img-details rounded-[0.5rem] overflow-hidden w-[19.9898rem] h-[14.245rem] md:w-[35.5929rem] md:h-[27.2252rem] lg:w-[34.9822rem] lg:h-[25.0625rem]"
+                    className="img-details flex-1 rounded-[0.5rem] overflow-hidden w-[19.9898rem] h-[14.245rem] md:w-[35.5929rem] md:h-[27.2252rem] lg:w-[34.9822rem] lg:h-[25.0625rem]"
                     src={flags?.png}
                     alt={flags?.alt}
                 />
 
                 {/* Details */}
-                <div>
+                <div className="flex-1">
                     {/* Name */}
                     <h3 className="text-(length:--fs-24) md:text-(length:--fs-32) lg font-extrabold leading-(--lh-1375) mb-(--space-200)">
                         {name?.common}
@@ -74,7 +104,7 @@ const CountryDetailsAPI = ({name: countryName}: CountryDetailsAPIProps) => {
                                 <p className="text-(length:--fs-14) md:text-(length:--fs-16) font-semibold leading-[1rem]">
                                     Native Name:{' '}
                                     <span className="font-light">
-                                        {name.nativeName.slv.common}
+                                        {nativeNameCommon}
                                     </span>
                                 </p>
                                 {/* Population */}
@@ -117,7 +147,7 @@ const CountryDetailsAPI = ({name: countryName}: CountryDetailsAPIProps) => {
                                     Currencies:{' '}
                                     {currencies && (
                                         <span className="font-light">
-                                            {currencies.EUR.name}
+                                            {currencyName}
                                         </span>
                                     )}
                                 </p>
@@ -125,7 +155,7 @@ const CountryDetailsAPI = ({name: countryName}: CountryDetailsAPIProps) => {
                                 <p className="text-(length:--fs-14) md:text-(length:--fs-16) font-semibold leading-[1rem]">
                                     Languages:{' '}
                                     <span className="font-light">
-                                        {languages.slv}
+                                        {languageNames}
                                     </span>
                                 </p>
                             </div>
