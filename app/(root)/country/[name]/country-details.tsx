@@ -39,13 +39,13 @@ const CountryDetails = ({name: countryName}: CountryDetailsProps) => {
             <div className="flex flex-col gap-y-(--space-600) lg:gap-x-[7rem] lg:flex-row lg:items-center">
                 {/* Flag */}
                 <img
-                    className="img-details rounded-[0.5rem] overflow-hidden w-[19.9898rem] h-[14.245rem] md:w-[35.5929rem] md:h-[27.2252rem] lg:w-[34.9822rem] lg:h-[25.0625rem]"
+                    className="img-details flex-1 rounded-[0.5rem] overflow-hidden w-[19.9898rem] h-[14.245rem] md:w-[35.5929rem] md:h-[27.2252rem] lg:w-[34.9822rem] lg:h-[25.0625rem]"
                     src={flag}
                     alt={`${name} flag`}
                 />
 
                 {/* Details */}
-                <div>
+                <div className="flex-1">
                     {/* Name */}
                     <h3 className="text-(length:--fs-24) md:text-(length:--fs-32) lg font-extrabold leading-(--lh-1375) mb-(--space-200)">
                         {name}
